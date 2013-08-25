@@ -1,1 +1,1 @@
-@install-chocolatey.cmd
+%1\install-chocolatey.cmd
