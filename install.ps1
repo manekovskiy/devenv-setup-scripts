@@ -1,14 +1,13 @@
-# param([String]$user="manekovskiy")
-# param([String]$branch="master")
-
 # directories and link to scripts archive
 $archiveSource = "https://github.com/$user/devenv-setup-scripts/archive/$branch.zip"
 $tempDir = Join-Path $env:TEMP "devenv-setup-scripts"
-if(![System.IO.Directory]::Exists($tempDir)) { [System.IO.Directory::CreateDirectory($tempDir)] }
+
+$tempDirExists = Test-Path $tempDir
+if(!$tempDirExists) { New-Item -ItemType directory -Path $tempDir }
 $archiveDest = Join-Path $tempDir "devenv-setup-scripts.zip"
 
 # download $branch branch to temp folder
-Write-Host "Downloading zipped $branch ($archiveSource) to $archiveDest ..."
+Write-Host "Downloading zipped $branch from $archiveSource to $archiveDest ..."
 $downloader = new-object System.Net.WebClient
 $downloader.DownloadFile($archiveSource, $archiveDest)
 
