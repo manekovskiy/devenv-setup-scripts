@@ -1,5 +1,5 @@
-param([String]$user="manekovskiy")
-param([String]$branch="master")
+# param([String]$user="manekovskiy")
+# param([String]$branch="master")
 
 # directories and link to scripts archive
 $archiveSource = "https://github.com/$user/devenv-setup-scripts/archive/$branch.zip"
